@@ -119,6 +119,13 @@ class Clasificacion:
     coincidencias: list[str] = field(default_factory=list)
 
 
+def _es_propio(hallado: str, propios: set[str]) -> bool:
+    """¿Lo hallado es el nombre de quien publica (o lo contiene, como «Ley de la Comisión
+    Federal de Electricidad»)? Una sigla corta no tapa términos más largos: «CFE
+    Transmisión» sí cuenta en un aviso de la CFE."""
+    return any(p and (hallado in p or (len(p) > 6 and p in hallado)) for p in propios)
+
+
 def _contiene(nombre: str, texto: str) -> bool:
     return f" {nombre} " in f" {texto} "
 
@@ -263,7 +270,7 @@ class Reglas:
             hits = []
             for t in c.terminos + c.solo_titulo:
                 m = t.busca([tn])
-                if m:
+                if m and not _es_propio(m, propios):
                     hits.append((t, m))
             if hits:
                 en_titulo[c.id] = hits
@@ -288,7 +295,7 @@ class Reglas:
                         if id(t) in ya:
                             continue
                         m = t.busca(fragmentos)
-                        if m and not any(m == p or m in p for p in propios):
+                        if m and not _es_propio(m, propios):
                             hits.append((t, m))
                     if hits:
                         puntos[c.id] += min(len(hits), c.max_texto)

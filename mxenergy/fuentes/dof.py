@@ -39,8 +39,10 @@ _REF_AVISO = re.compile(r"^aviso ref\s*:?\s*\d+$", re.I)
 _REF = re.compile(r"\s*-?\s*REF\s*:\s*\d+\s*$", re.I)
 _UNIDAD = re.compile(r"^(?=[0-9A-Z]*\d)[0-9A-Z]{5,7}\s*-\s*")          # «018TON - CENTRO…»
 _NUM_PROC = re.compile(r"^(?:no\.?\s*)?[A-Z0-9]{2,}(?:-[A-Z0-9]+){2,}$")  # CFE-0001-CAAAT-0204-2026
-_ETIQUETA = re.compile(r"^(objeto|descripci[oó]n|nombre del procedimiento|concepto)"
-                       r"(?: de la (?:licitaci[oó]n|contrataci[oó]n|convocatoria))?\s*:?\s*(.*)$", re.I)
+_ETIQUETA = re.compile(r"^(objeto|descripci[oó]n|nombre del procedimiento|concepto)\b[^:]{0,45}:\s*(.*)$",
+                       re.I)
+_NUM_EN_TEXTO = re.compile(r"\b(?:no\.?\s*)?[A-Z0-9]{2,}(?:-[A-Z0-9]+){2,}\b")
+_FUNDAMENTO = re.compile(r"^(con fundamento|de conformidad|en cumplimiento|en t[eé]rminos de)", re.I)
 _RUBRO = re.compile(r"^(volumen|fecha|visita|junta|sesi[oó]n|presentaci[oó]n|apertura|fallo|"
                     r"l[ií]mite|plazo|lugar|n[uú]mero|car[aá]cter|descripci[oó]n|objeto)\b", re.I)
 SECCIONES_AVISOS = ("AV", "CV")   # avisos judiciales y generales; convocatorias (licitaciones)
@@ -117,22 +119,33 @@ def objeto_convocatoria(texto: str) -> str | None:
     """Qué se licita: la línea que sigue al número de procedimiento, o la de «Objeto»."""
     lineas = [ln.strip() for ln in (texto or "").split("\n") if ln.strip()]
     for i, ln in enumerate(lineas[:40]):
+        m = _NUM_EN_TEXTO.search(ln)
+        if m and any(ch.isdigit() for ch in m.group(0)):
+            resto = ln[m.end():].strip(" :.-–—")
+            if len(resto) >= 12 and not _RUBRO.match(resto) and not _FUNDAMENTO.match(resto):
+                return _limpiar_objeto(resto)     # «No. de Concurso: CFE-…-2026 Servicio de …»
         if _NUM_PROC.match(ln.replace(" ", "")) and any(ch.isdigit() for ch in ln):
             partes = []
             for sig in lineas[i + 1:i + 4]:
                 if (sig.endswith(":") or len(sig) < 4 or re.match(r"^\d{1,2}[/ ]", sig)
-                        or _RUBRO.match(sig)):
+                        or _RUBRO.match(sig) or _FUNDAMENTO.match(sig)):
                     break
                 partes.append(sig)
             if partes:
-                return recortar(_oracion(" ".join(partes)), 160)
+                return _limpiar_objeto(" ".join(partes))
     for i, ln in enumerate(lineas[:60]):
         m = _ETIQUETA.match(ln)
         if m:
             valor = m.group(2).strip() or (lineas[i + 1] if i + 1 < len(lineas) else "")
-            if len(valor) >= 8:
-                return recortar(_oracion(valor), 160)
+            if len(valor) >= 8 and not valor.endswith(":"):
+                return _limpiar_objeto(valor)
     return None
+
+
+def _limpiar_objeto(s: str) -> str | None:
+    s = _NUM_EN_TEXTO.sub(" ", s)
+    s = " ".join(s.split()).strip(" ,;:-–—")
+    return recortar(_oracion(s), 160) if len(s) >= 8 else None
 
 
 def encabezado_aviso(texto: str) -> tuple[str, str | None, bool, str]:
