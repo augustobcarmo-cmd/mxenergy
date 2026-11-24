@@ -1,0 +1,458 @@
+# Reglas del filtro: deciden qué publicaciones del DOF aparecen como relevantes
+# y con qué categorías se etiquetan las noticias. No usan IA: son listas de
+# términos, revisables y corregibles aquí mismo.
+#
+# Cómo se lee un término:
+#   - Se compara sin acentos ni mayúsculas y como frase completa
+#     («cfe» no coincide dentro de «cfecto»).
+#   - Con * al final es prefijo: «eólic*» = eólica, eólico, eólicas…
+#   - Con «re:» delante es una expresión regular sobre el texto normalizado
+#     (minúsculas, sin acentos, solo letras, números y puntos).
+#
+# Puntaje de cada publicación (el de su mejor categoría, +1 si dos categorías
+# llegan a 2 o más):
+#   - dependencia del DOF de la lista `dependencias`: sus `puntos`;
+#   - término en el título: `peso_titulo` de la categoría;
+#   - términos en el texto (solo categorías con cuenta_texto): 1 por término
+#     distinto, hasta `max_texto`;
+#   - fracción arancelaria en el texto: `puntos_fraccion`.
+#   - `techo` (opcional) limita lo que puede sumar una categoría sola.
+# Prioridad: alta ≥ 3, media = 2, baja = 1. Sin puntaje: no aparece entre las
+# relevantes (sigue en «Todas las publicaciones del DOF» y en la búsqueda).
+#
+# Un push que cambia este archivo dispara una corrida que reclasifica todo el
+# historial con las reglas nuevas.
+
+umbrales:
+  alta: 3
+  media: 2
+  baja: 1
+
+categorias:
+  electricidad:
+    nombre: Electricidad
+    color: blue
+    descripcion: Generación, mercado eléctrico, permisos, tarifas, suministro, autoconsumo y energías limpias.
+    peso_titulo: 3
+    cuenta_texto: true
+    max_texto: 2
+    terminos:
+      - energía eléctrica
+      - sector eléctrico
+      - industria eléctrica
+      - sistema eléctrico nacional
+      - mercado eléctrico mayorista
+      - mercado eléctrico
+      - central eléctrica
+      - centrales eléctricas
+      - generación de energía
+      - generación eléctrica
+      - generación de electricidad
+      - generación distribuida
+      - permiso de generación
+      - permisos de generación
+      - autoconsumo
+      - abasto aislado
+      - suministro básico
+      - suministro calificado
+      - suministrador de servicios básicos
+      - tarifas eléctricas
+      - tarifa eléctrica
+      - tarifas finales
+      - energías limpias
+      - energía limpia
+      - energías renovables
+      - energía renovable
+      - certificados de energías limpias
+      - fotovoltaic*
+      - energía solar
+      - planta solar
+      - parque solar
+      - central solar
+      - eólic*
+      - geotermi*
+      - hidroeléctric*
+      - nucleoeléctric*
+      - ciclo combinado
+      - cogeneración
+      - ley del sector eléctrico
+      - ley de la industria eléctrica
+      - ley de la comisión federal de electricidad
+      - planeación vinculante
+      - pladese
+      - prodesen
+      - programa de desarrollo del sistema eléctrico nacional
+      - plan de desarrollo del sector eléctrico
+      - precios marginales locales
+      - balance de potencia
+      - contratos de cobertura eléctrica
+      - subastas de largo plazo
+      - proyectos estratégicos de generación
+      - centrales mixtas
+      - esquema mixto
+      # Sinónimos en un solo término, para que no cuenten doble en el texto.
+      - 're:\b(cenace|centro nacional de control de energia)\b'
+      - 're:\b(cfe|comision federal de electricidad)\b'
+    # Términos que también se usan en hidrocarburos («autoconsumo de
+    # petrolíferos»). Si en el título solo aparece uno de estos y además hay
+    # términos de hidrocarburos, no cuentan como eléctricos.
+    ambiguos:
+      - autoconsumo
+    ceder_a: hidrocarburos
+
+  almacenamiento:
+    nombre: Almacenamiento (BESS)
+    color: violet
+    descripcion: Sistemas de almacenamiento de energía y baterías.
+    peso_titulo: 3
+    cuenta_texto: true
+    max_texto: 2
+    terminos:
+      - almacenamiento de energía
+      - almacenamiento eléctrico
+      - almacenamiento en baterías
+      - sistemas de almacenamiento
+      - sistema de almacenamiento
+      - saee
+      - bess
+      - baterías de litio
+      - baterías de ion litio
+      - sistemas de baterías
+    solo_titulo:
+      - baterías
+      - batería
+
+  transmision:
+    nombre: Transmisión y distribución
+    color: orange
+    descripcion: Red Nacional de Transmisión, Redes Generales de Distribución, subestaciones, interconexión y código de red.
+    peso_titulo: 3
+    cuenta_texto: true
+    max_texto: 2
+    terminos:
+      - red nacional de transmisión
+      - redes generales de distribución
+      - transmisión de energía
+      - transmisión eléctrica
+      - transmisión y distribución
+      - línea de transmisión
+      - líneas de transmisión
+      - subestación*
+      - red eléctrica
+      - redes eléctricas
+      - cfe transmisión
+      - cfe distribución
+      - distribución de energía eléctrica
+      - ampliación y modernización
+      - código de red
+      - obras de refuerzo
+      - interconexión eléctrica
+      - estudios de interconexión
+      - interconexión de centrales
+      - 're:\b\d{2,3} kv\b'
+
+  industria:
+    nombre: Industria y equipos
+    color: green
+    descripcion: Módulos, inversores, seguidores, baterías, transformadores y cables; fabricación, contenido nacional y normas de equipos.
+    peso_titulo: 2
+    cuenta_texto: true
+    max_texto: 2
+    terminos:
+      - módulos fotovoltaicos
+      - módulo fotovoltaico
+      - módulos solares
+      - paneles solares
+      - panel solar
+      - celdas solares
+      - celdas fotovoltaicas
+      - inversores fotovoltaicos
+      - inversores solares
+      - inversor fotovoltaico
+      - inversores de corriente
+      - convertidores estáticos
+      - seguidores solares
+      - seguidor solar
+      - tracker*
+      - aerogenerador*
+      - turbinas eólicas
+      - transformadores
+      - transformador de potencia
+      - acumuladores eléctricos
+      - proveeduría nacional
+      - polos de desarrollo
+      - nearshoring
+      - relocalización
+      - instalaciones eléctricas
+      - 're:\bnom \d{3} sede\b'
+      - 're:\bnom \d{3} ener\b'
+    # Palabras que en el cuerpo de cualquier decreto aparecen a cada rato: solo cuentan en el título.
+    solo_titulo:
+      - acero
+      - aluminio
+      - cobre
+      - litio
+      - cables
+      - silicio
+      - polisilicio
+      - contenido nacional
+      - cadena de suministro
+      - plan méxico
+    # Fracciones arancelarias (SA 2022) buscadas en el texto de decretos,
+    # reglas de comercio exterior y resoluciones.
+    puntos_fraccion: 3
+    fracciones:
+      - {codigo: "8541.42", nombre: celdas fotovoltaicas}
+      - {codigo: "8541.43", nombre: módulos fotovoltaicos}
+      - {codigo: "8501.71", nombre: generadores fotovoltaicos}
+      - {codigo: "8501.72", nombre: generadores fotovoltaicos}
+      - {codigo: "8501.80", nombre: generadores fotovoltaicos de CA}
+      - {codigo: "8504.40", nombre: inversores y convertidores}
+      - {codigo: "8507.60", nombre: baterías de ion litio}
+      - {codigo: "8502.31", nombre: aerogeneradores}
+      - {codigo: "8504.21", nombre: transformadores}
+      - {codigo: "8504.22", nombre: transformadores}
+      - {codigo: "8504.23", nombre: transformadores}
+      - {codigo: "8535", nombre: aparatos de más de 1 kV}
+      - {codigo: "8537", nombre: tableros eléctricos}
+      - {codigo: "8544", nombre: cables}
+      - {codigo: "7308.20", nombre: torres de acero}
+      - {codigo: "7308.90", nombre: estructuras de acero}
+
+  fiscal:
+    nombre: Fiscal y comercio exterior
+    color: red
+    descripcion: Impuestos, estímulos fiscales, aranceles, aduanas y comercio exterior.
+    peso_titulo: 2
+    cuenta_texto: false
+    terminos:
+      - impuesto sobre la renta
+      - impuesto al valor agregado
+      - impuesto especial sobre producción y servicios
+      - isr
+      - iva
+      - ieps
+      - código fiscal de la federación
+      - resolución miscelánea fiscal
+      - miscelánea fiscal
+      - ley de ingresos de la federación
+      - ley federal de derechos
+      - presupuesto de egresos de la federación
+      - paquete económico
+      - estímulo fiscal
+      - estímulos fiscales
+      - deducción inmediata
+      - servicio de administración tributaria
+      - sat
+      - comercio exterior
+      - reglas generales de comercio exterior
+      - impuestos generales de importación y de exportación
+      - impuesto general de importación
+      - ley aduanera
+      - fracciones arancelarias
+      - cupos de importación
+      - immex
+      - prosec
+      - programas de promoción sectorial
+      - certificado de origen
+      - t mec
+
+  energia:
+    nombre: Energía (política y reguladores)
+    color: gray
+    descripcion: SENER, CNE, CONUEE, política y transición energética, eficiencia energética, hidrógeno.
+    peso_titulo: 2
+    cuenta_texto: false
+    terminos:
+      - secretaría de energía
+      - sener
+      - comisión nacional de energía
+      - comisión reguladora de energía
+      - conuee
+      - uso eficiente de la energía
+      - eficiencia energética
+      - transición energética
+      - política energética
+      - sector energético
+      - energétic*
+      - ley de planeación y transición energética
+      - programa sectorial de energía
+      - hidrógeno
+      - electromovilidad
+      - vehículos eléctricos
+      - energía
+
+  hidrocarburos:
+    nombre: Hidrocarburos y gas
+    color: orange
+    descripcion: Petróleo, gas natural, gas LP, petrolíferos, ductos, Pemex y ASEA.
+    peso_titulo: 2
+    techo: 2          # solo no pasa de prioridad media (salvo que también toque otra categoría)
+    cuenta_texto: false
+    terminos:
+      - hidrocarbur*
+      - petróleo
+      - petrolífer*
+      - gas natural
+      - gas lp
+      - gas licuado
+      - gasolina*
+      - diésel
+      - diesel
+      - combustible*
+      - combustóleo
+      - turbosina
+      - gasoducto*
+      - ductos
+      - pemex
+      - petróleos mexicanos
+      - cenagas
+      - refinación
+      - refinería*
+      - expendio
+      - estaciones de servicio
+      - ley del sector hidrocarburos
+      - asea
+      - agencia de seguridad energía y ambiente
+
+  ambiental:
+    nombre: Ambiental y territorio
+    color: green
+    descripcion: Impacto ambiental y social, áreas naturales protegidas, cambio climático, emisiones y uso de suelo.
+    peso_titulo: 2
+    techo: 2
+    cuenta_texto: false
+    terminos:
+      - impacto ambiental
+      - manifestación de impacto ambiental
+      - evaluación de impacto ambiental
+      - impacto social
+      - evaluación de impacto social
+      - áreas naturales protegidas
+      - área natural protegida
+      - ordenamiento ecológico
+      - cambio climático
+      - gases de efecto invernadero
+      - emisiones
+      - consulta indígena
+      - cambio de uso de suelo
+      - uso de suelo
+      - ventanilla electrónica ambiental
+
+# Dependencias del DOF que bastan por sí mismas (todo lo que publican interesa).
+dependencias:
+  - {nombre: SECRETARIA DE ENERGIA, sigla: SENER, categoria: energia, puntos: 3}
+  - {nombre: COMISION NACIONAL DE ENERGIA, sigla: CNE, categoria: energia, puntos: 3}
+  - {nombre: COMISION REGULADORA DE ENERGIA, sigla: CRE, categoria: energia, puntos: 3}
+  - {nombre: CENTRO NACIONAL DE CONTROL DE ENERGIA, sigla: CENACE, categoria: electricidad, puntos: 3}
+  - {nombre: COMISION FEDERAL DE ELECTRICIDAD, sigla: CFE, categoria: electricidad, puntos: 3}
+  - {nombre: AGENCIA DE SEGURIDAD ENERGIA Y AMBIENTE, sigla: ASEA, categoria: hidrocarburos, puntos: 2}
+  - {nombre: COMISION NACIONAL PARA EL USO EFICIENTE DE LA ENERGIA, sigla: CONUEE, categoria: energia, puntos: 2}
+  - {nombre: CENTRO NACIONAL DE CONTROL DEL GAS NATURAL, sigla: CENAGAS, categoria: hidrocarburos, puntos: 2}
+  - {nombre: PETROLEOS MEXICANOS, sigla: Pemex, categoria: hidrocarburos, puntos: 2}
+  - {nombre: COMISION NACIONAL DE SEGURIDAD NUCLEAR Y SALVAGUARDIAS, sigla: CNSNS, categoria: energia, puntos: 1}
+
+# Siglas para mostrar (no suman puntos).
+siglas:
+  SECRETARIA DE HACIENDA Y CREDITO PUBLICO: SHCP
+  SECRETARIA DE ECONOMIA: SE
+  SECRETARIA DE MEDIO AMBIENTE Y RECURSOS NATURALES: SEMARNAT
+  SECRETARIA DE GOBERNACION: SEGOB
+  PRESIDENCIA DE LA REPUBLICA: Presidencia
+  BANCO DE MEXICO: Banxico
+  SUPREMA CORTE DE JUSTICIA DE LA NACION: SCJN
+  CAMARA DE DIPUTADOS: Cámara de Diputados
+  CAMARA DE SENADORES: Senado
+  SERVICIO DE ADMINISTRACION TRIBUTARIA: SAT
+  SECRETARIA DE DESARROLLO AGRARIO TERRITORIAL Y URBANO: SEDATU
+  COMISION NACIONAL DEL AGUA: CONAGUA
+  INSTITUTO NACIONAL DE ESTADISTICA Y GEOGRAFIA: INEGI
+  SECRETARIA DE INFRAESTRUCTURA COMUNICACIONES Y TRANSPORTES: SICT
+  SECRETARIA ANTICORRUPCION Y BUEN GOBIERNO: Anticorrupción y Buen Gobierno
+  SECRETARIA DE MARINA: SEMAR
+  SECRETARIA DE SALUD: Salud
+  SECRETARIA DE AGRICULTURA Y DESARROLLO RURAL: SADER
+  SECRETARIA DEL TRABAJO Y PREVISION SOCIAL: STPS
+  SECRETARIA DE RELACIONES EXTERIORES: SRE
+  SECRETARIA DE BIENESTAR: Bienestar
+  INSTITUTO NACIONAL ELECTORAL: INE
+
+# Títulos que nunca son relevantes aunque mencionen algún término (salvo que
+# los publique una dependencia de la lista de arriba).
+excluir_titulo:
+  - participaciones federales
+  - recaudación federal participable
+  - tipo de cambio para solventar obligaciones
+  - tasas de interés interbancarias
+  - tasa de interés interbancaria
+  - valor de la unidad de inversión
+  - costo de captación
+  - costo porcentual promedio
+  - equivalencia de las monedas
+  - índice nacional de precios
+  - asociación religiosa
+  - asociaciones religiosas
+  - lotería nacional
+  - sorteo
+  - listado global
+  - listado de contribuyentes
+  - artículo 69 b
+  - prestadores de servicios digitales
+  - manual de integración y funcionamiento
+  - código de conducta
+  - comité interno
+  - circunscripción territorial
+  # Avisos semanales de rutina sobre el estímulo a gasolinas y diésel (IEPS)
+  - montos de los estímulos fiscales aplicables a la enajenación
+  - cuotas disminuidas del impuesto especial
+  - estímulos fiscales a la gasolina y al diésel
+
+# Marcas de que una noticia trata de México (sobre todo para Energía
+# Estratégica, que cubre toda la región). «CNE» no está: Chile también tiene una.
+mexico:
+  - méxico
+  - mexican*
+  - cdmx
+  - cfe
+  - comisión federal de electricidad
+  - cenace
+  - sener
+  - pemex
+  - sheinbaum
+  - pladese
+  - prodesen
+  - plan méxico
+  - aguascalientes
+  - baja california
+  - campeche
+  - chiapas
+  - chihuahua
+  - coahuila
+  - colima
+  - durango
+  - guanajuato
+  - jalisco
+  - michoacán
+  - nayarit
+  - nuevo león
+  - oaxaca
+  - puebla
+  - querétaro
+  - quintana roo
+  - san luis potosí
+  - sinaloa
+  - sonora
+  - tabasco
+  - tamaulipas
+  - tlaxcala
+  - veracruz
+  - yucatán
+  - zacatecas
+  - monterrey
+  - guadalajara
+  - mérida
+  - hermosillo
+  - tijuana
+  - mexicali
+no_mexico:
+  - nuevo méxico

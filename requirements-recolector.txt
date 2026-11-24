@@ -1,0 +1,9 @@
+# Recolector (GitHub Action «Recolectar»)
+requests==2.34.2
+PyYAML==6.0.3
+pyarrow==26.0.1
+selectolax==1.0.2
+feedparser==6.0.14
+playwright==1.63.0
+curl_cffi==0.17.0
+tzdata==2026.6

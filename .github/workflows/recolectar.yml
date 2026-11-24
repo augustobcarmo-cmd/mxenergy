@@ -1,0 +1,101 @@
+name: Recolectar DOF y noticias
+
+# Recolecta el DOF (SIDOF) y las noticias, las clasifica con config/reglas.yaml
+# y guarda todo en la rama `datos` (un solo commit sin historial: el
+# repositorio no crece). La app de Streamlit lee esa rama.
+on:
+  schedule:
+    - cron: "17 11 * * *"   # 5:17 CDMX: cierra el día anterior (vespertina incluida)
+    - cron: "17 15 * * *"   # 9:17: matutina del día
+    - cron: "17 19 * * *"   # 13:17
+    - cron: "17 23 * * *"   # 17:17
+    - cron: "17 3 * * *"    # 21:17
+  workflow_dispatch:
+    inputs:
+      fuentes:
+        description: "Solo estas fuentes (ids separados por coma; vacío = todas)"
+        required: false
+        default: ""
+      reprocesar_dof_dias:
+        description: "Volver a descargar y clasificar el DOF de los últimos N días"
+        required: false
+        default: "0"
+  push:
+    branches: [main]
+    paths:
+      - "mxenergy/**"
+      - "config/**"
+      - "scripts/recolectar.py"
+      - "requirements-recolector.txt"
+      - ".github/workflows/recolectar.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: recolectar
+  cancel-in-progress: false
+
+jobs:
+  recolectar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Traer la rama datos
+        uses: actions/checkout@v4
+        continue-on-error: true    # la primera vez no existe
+        with:
+          ref: datos
+          path: datos_rama
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements-recolector.txt
+
+      - name: Instalar dependencias
+        run: pip install -r requirements-recolector.txt
+
+      - name: Caché del navegador
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('requirements-recolector.txt') }}
+
+      - name: Navegador para Energía Estratégica
+        run: python -m playwright install --with-deps chromium
+
+      - name: Recolectar
+        id: corrida
+        env:
+          FUENTES: ${{ inputs.fuentes }}
+          REPROCESAR: ${{ inputs.reprocesar_dof_dias }}
+        run: |
+          mkdir -p datos_rama
+          python scripts/recolectar.py --datos datos_rama --fuentes "${FUENTES}" --reprocesar-dof-dias "${REPROCESAR:-0}"
+
+      - name: Publicar la rama datos
+        if: steps.corrida.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESUMEN: ${{ steps.corrida.outputs.resumen }}
+        run: |
+          cp .github/datos-README.md datos_rama/README.md
+          cd datos_rama
+          rm -rf .git
+          git init -q
+          git checkout -q -b datos
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Datos $(TZ=America/Mexico_City date '+%Y-%m-%d %H:%M')" -m "$RESUMEN"
+          git push -q -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" datos
+
+      - name: Avisar si una fuente crítica sigue fallando
+        if: steps.corrida.outputs.alerta == 'true'
+        run: |
+          echo "Una fuente crítica lleva varias corridas con error. Detalle en logs/ultima.log de la rama datos."
+          exit 1

@@ -1,0 +1,84 @@
+# Fuentes que recorre el recolector (GitHub Action «Recolectar»).
+#
+# Para apagar una fuente sin borrarla: activa: false.
+# `prioridad`: 1 = la más importante. Ordena la portada de la app.
+# Los cambios aquí se aplican en la siguiente corrida (un push a main dispara una).
+
+dof:
+  activa: true
+  # Fuente oficial: API del SIDOF (Secretaría de Gobernación). Si falla un día,
+  # se usa el índice clásico de dof.gob.mx para ese día.
+  inicio_historial: 2026-08-01   # el recolector completa los días faltantes desde aquí
+  dias_revision: 10              # cada corrida vuelve a mirar los últimos N días (ediciones tardías)
+  max_dias_por_corrida: 40       # tope de días nuevos por corrida al completar historial
+  max_notas_por_corrida: 3000    # tope de notas cuyo texto se descarga en una corrida
+  descargas_simultaneas: 4
+
+noticias:
+  ventana_dias: 4                # cada corrida guarda lo publicado en los últimos N días
+
+  fuentes:
+    - id: energia_estrategica
+      nombre: Energía Estratégica
+      tipo: energia_estrategica
+      prioridad: 1
+      activa: true
+      max_articulos_por_corrida: 90
+      # Listados públicos que se leen con un navegador sin ventana (la página
+      # arma la lista en el navegador). La sección México marca sus notas como México.
+      listados:
+        - url: https://www.energiaestrategica.com/es/articles/mexico
+          region: México
+        - url: https://www.energiaestrategica.com/energiaestrategica/es
+        - url: https://www.energiaestrategica.com/es/articles/storage
+        - url: https://www.energiaestrategica.com/es/articles/fotovoltaica
+        - url: https://www.energiaestrategica.com/es/articles/eolica
+
+    - id: global_energy
+      nombre: Global Energy
+      tipo: rss
+      url: https://globalenergy.mx/feed/
+      prioridad: 2
+      activa: true
+
+    - id: mbn
+      nombre: Mexico Business News
+      tipo: mbn
+      url: https://mexicobusiness.news/energy
+      prioridad: 2
+      activa: true
+      max_articulos_por_corrida: 25
+
+    - id: pv_magazine
+      nombre: PV Magazine México
+      tipo: rss
+      url: https://www.pv-magazine-mexico.com/feed/
+      prioridad: 2
+      activa: true
+
+    - id: energia_a_debate
+      nombre: Energía a Debate
+      tipo: rss
+      url: https://energiaadebate.com/feed/
+      prioridad: 2
+      activa: true
+
+    - id: energy_news
+      nombre: Energy News MX
+      tipo: rss
+      url: https://energynews.mx/feed/
+      prioridad: 3
+      activa: true
+
+    - id: energy21
+      nombre: Energy21
+      tipo: rss
+      url: https://energy21.com.mx/feed/
+      prioridad: 3
+      activa: true
+
+# Avisos: una fuente crítica que falla varias corridas seguidas marca la corrida
+# en rojo en GitHub, y GitHub manda un correo.
+alertas:
+  dof: 2                    # corridas seguidas con error
+  energia_estrategica: 3

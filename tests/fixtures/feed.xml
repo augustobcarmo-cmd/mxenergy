@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+  <title>Medio de prueba</title>
+  <link>https://medio.example/</link>
+  <description>Feed de prueba</description>
+  <item>
+    <title>CENACE publica el programa de ampliación de la Red Nacional de Transmisión</title>
+    <link>https://medio.example/2026/11/23/cenace-rnt/</link>
+    <pubDate>Mon, 23 Nov 2026 18:30:00 +0000</pubDate>
+    <category><![CDATA[Transmisión]]></category>
+    <description><![CDATA[<p>El CENACE dio a conocer las obras de transmisión de 400 kV para 2027.</p>]]></description>
+  </item>
+  <item>
+    <title>Pemex ajusta precios de gasolina en estaciones de servicio</title>
+    <link>https://medio.example/2026/11/22/pemex-gasolina/</link>
+    <pubDate>Sun, 22 Nov 2026 16:00:00 +0000</pubDate>
+    <description><![CDATA[Ajuste semanal de precios de combustibles.]]></description>
+  </item>
+  <item>
+    <title>Nota vieja sobre energía solar</title>
+    <link>https://medio.example/2026/11/10/vieja/</link>
+    <pubDate>Tue, 10 Nov 2026 12:00:00 +0000</pubDate>
+    <description><![CDATA[Fuera de la ventana.]]></description>
+  </item>
+</channel>
+</rss>
