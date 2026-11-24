@@ -95,6 +95,7 @@ class Categoria:
     techo: int | None
     terminos: list[Termino]
     solo_titulo: list[Termino]
+    noticias: list[Termino]      # términos que solo se usan con noticias (en el DOF serían ambiguos)
     ambiguos: set[str]
     ceder_a: str | None
     fracciones: list[Fraccion]
@@ -141,6 +142,7 @@ class Reglas:
                 techo=c.get("techo"),
                 terminos=[compilar(t) for t in c.get("terminos") or []],
                 solo_titulo=[compilar(t) for t in c.get("solo_titulo") or []],
+                noticias=[compilar(t) for t in c.get("noticias") or []],
                 ambiguos={normalizar(str(t).rstrip("*")) for t in c.get("ambiguos") or []},
                 ceder_a=c.get("ceder_a"),
                 fracciones=[Fraccion.de(f["codigo"], f.get("nombre", ""))
@@ -205,13 +207,21 @@ class Reglas:
 
     def clasificar(self, titulo: str, texto: str | list[str] | None = None,
                    dependencia: str | None = None, es_edicto: bool = False,
-                   normalizado: bool = False) -> Clasificacion:
+                   normalizado: bool = False, es_noticia: bool = False,
+                   max_puntos_dependencia: int | None = None) -> Clasificacion:
         """Categorías, puntaje y prioridad de una publicación.
 
         `texto` es el cuerpo (DOF) o el resumen (noticias); también puede ser
         una lista de fragmentos ya normalizados (`normalizado=True`), que es como
         se reclasifica el historial con las coincidencias guardadas.
+
+        Con `es_noticia` se suman los términos de `noticias` de cada categoría
+        y el resumen cuenta en todas. `max_puntos_dependencia` limita lo que
+        aporta quien publica (convocatorias y avisos: que la CFE compre
+        refacciones no basta para que sea relevante).
         """
+        if es_noticia:
+            return self._clasificar_noticia(titulo, texto)
         if es_edicto:
             return Clasificacion()
         tn = normalizar(titulo)
@@ -224,6 +234,16 @@ class Reglas:
         fragmentos = [f for f in fragmentos if f]
 
         dep = self.dependencia(dependencia)
+        # En avisos y convocatorias el texto nombra a quien publica a cada paso
+        # («la Comisión Federal de Electricidad convoca…»): eso no cuenta.
+        propios: set[str] = set()
+        if max_puntos_dependencia is not None and dependencia:
+            propios.add(normalizar(dependencia))
+            if dep is not None:
+                propios.add(normalizar(dep.sigla))
+        if dep is not None and max_puntos_dependencia is not None:
+            dep = Dependencia(dep.clave, dep.sigla, dep.categoria,
+                              min(dep.puntos, max_puntos_dependencia))
         if dep is None or dep.puntos < self.umbrales["alta"]:
             if any(t.busca([tn]) for t in self.excluir):
                 return Clasificacion()
@@ -268,7 +288,7 @@ class Reglas:
                         if id(t) in ya:
                             continue
                         m = t.busca(fragmentos)
-                        if m:
+                        if m and not any(m == p or m in p for p in propios):
                             hits.append((t, m))
                     if hits:
                         puntos[c.id] += min(len(hits), c.max_texto)
@@ -304,6 +324,42 @@ class Reglas:
         return Clasificacion(categorias=categorias, puntaje=puntaje,
                              prioridad=self.prioridad(puntaje), motivos=motivos,
                              coincidencias=sorted(set(coincidencias)))
+
+    def _clasificar_noticia(self, titulo: str, texto: str | list[str] | None) -> Clasificacion:
+        """Noticias: todas las fuentes son del sector; las categorías sirven de filtro."""
+        tn = normalizar(titulo)
+        if isinstance(texto, list):
+            xn = " \n ".join(normalizar(t) for t in texto)
+        else:
+            xn = normalizar((texto or "")[:5000])
+        puntos: dict[str, int] = defaultdict(int)
+        motivos: list[str] = []
+        en_titulo: dict[str, list[tuple[Termino, str]]] = {}
+        for c in self.categorias.values():
+            hits = [(t, m) for t in c.terminos + c.solo_titulo + c.noticias if (m := t.busca([tn]))]
+            if hits:
+                en_titulo[c.id] = hits
+        for c in self.categorias.values():
+            if (c.id in en_titulo and c.ceder_a in en_titulo and c.ambiguos
+                    and all(t.clave in c.ambiguos for t, _ in en_titulo[c.id])):
+                del en_titulo[c.id]
+        for cid, hits in en_titulo.items():
+            puntos[cid] += self.categorias[cid].peso_titulo
+            motivos.append("Título: " + " y ".join(f"«{t.etiqueta(m)}»" for t, m in hits[:2]))
+        if xn:
+            for c in self.categorias.values():
+                if c.id in en_titulo:
+                    continue
+                hits = [(t, m) for t in c.terminos + c.noticias if (m := t.busca([xn]))]
+                if hits:
+                    puntos[c.id] += 1
+                    motivos.append("Resumen: " + ", ".join(f"«{t.etiqueta(m)}»" for t, m in hits[:2]))
+        if not puntos:
+            return Clasificacion()
+        categorias = sorted(puntos, key=lambda c: (-puntos[c], self.orden.get(c, 99)))
+        puntaje = max(puntos.values())
+        return Clasificacion(categorias=categorias, puntaje=puntaje,
+                             prioridad=self.prioridad(puntaje), motivos=motivos)
 
     def prioridad(self, puntaje: int) -> str:
         u = self.umbrales

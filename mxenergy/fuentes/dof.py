@@ -36,6 +36,14 @@ _TIPOS = {
     "MODIFICACION", "ACLARACION", "FE", "NOTA", "PLAN", "ESTRATEGIA", "BASES", "TARIFA",
 }
 _REF_AVISO = re.compile(r"^aviso ref\s*:?\s*\d+$", re.I)
+_REF = re.compile(r"\s*-?\s*REF\s*:\s*\d+\s*$", re.I)
+_UNIDAD = re.compile(r"^(?=[0-9A-Z]*\d)[0-9A-Z]{5,7}\s*-\s*")          # «018TON - CENTRO…»
+_NUM_PROC = re.compile(r"^(?:no\.?\s*)?[A-Z0-9]{2,}(?:-[A-Z0-9]+){2,}$")  # CFE-0001-CAAAT-0204-2026
+_ETIQUETA = re.compile(r"^(objeto|descripci[oó]n|nombre del procedimiento|concepto)"
+                       r"(?: de la (?:licitaci[oó]n|contrataci[oó]n|convocatoria))?\s*:?\s*(.*)$", re.I)
+_RUBRO = re.compile(r"^(volumen|fecha|visita|junta|sesi[oó]n|presentaci[oó]n|apertura|fallo|"
+                    r"l[ií]mite|plazo|lugar|n[uú]mero|car[aá]cter|descripci[oó]n|objeto)\b", re.I)
+SECCIONES_AVISOS = ("AV", "CV")   # avisos judiciales y generales; convocatorias (licitaciones)
 _CODIGO = re.compile(r"codigo=(\d+)")
 _FECHA = re.compile(r"fecha=([\d/]+)")
 
@@ -78,6 +86,11 @@ def notas_sidof(j: dict) -> list[dict]:
                 continue  # encabezado de una dependencia, sin nota propia
             cod = int(cod)
             poder = _limpio(n.get("codOrgaUno"))
+            if poder not in SECCIONES_AVISOS:
+                if _REF_AVISO.match(titulo):
+                    poder = "AV"
+                elif _REF.search(titulo):
+                    poder = "CV"
             out.setdefault(cod, {
                 "cod": cod,
                 "titulo": titulo,
@@ -85,9 +98,41 @@ def notas_sidof(j: dict) -> list[dict]:
                 "poder": poder,
                 "dependencia": _limpio(n.get("codOrgaDos")),
                 "pagina": n.get("pagina"),
-                "aviso": poder == "AV" or bool(_REF_AVISO.match(titulo)),
+                "aviso": poder in SECCIONES_AVISOS,
             })
     return list(out.values())
+
+
+def organismo_de(titulo: str) -> str:
+    """«018TON - CENTRO NACIONAL DE CONTROL DEL GAS NATURAL - REF:582598» → el organismo."""
+    return _UNIDAD.sub("", _REF.sub("", titulo)).strip(" -") or titulo
+
+
+def _oracion(s: str) -> str:
+    s = " ".join(s.split())
+    return s[:1].upper() + s[1:].lower() if s.isupper() else s
+
+
+def objeto_convocatoria(texto: str) -> str | None:
+    """Qué se licita: la línea que sigue al número de procedimiento, o la de «Objeto»."""
+    lineas = [ln.strip() for ln in (texto or "").split("\n") if ln.strip()]
+    for i, ln in enumerate(lineas[:40]):
+        if _NUM_PROC.match(ln.replace(" ", "")) and any(ch.isdigit() for ch in ln):
+            partes = []
+            for sig in lineas[i + 1:i + 4]:
+                if (sig.endswith(":") or len(sig) < 4 or re.match(r"^\d{1,2}[/ ]", sig)
+                        or _RUBRO.match(sig)):
+                    break
+                partes.append(sig)
+            if partes:
+                return recortar(_oracion(" ".join(partes)), 160)
+    for i, ln in enumerate(lineas[:60]):
+        m = _ETIQUETA.match(ln)
+        if m:
+            valor = m.group(2).strip() or (lineas[i + 1] if i + 1 < len(lineas) else "")
+            if len(valor) >= 8:
+                return recortar(_oracion(valor), 160)
+    return None
 
 
 def encabezado_aviso(texto: str) -> tuple[str, str | None, bool, str]:
@@ -303,15 +348,24 @@ class FuenteDOF(Fuente):
         es_edicto = False
         tipo = tipo_doc(titulo)
         cuerpo = texto or ""
+        titulo_reglas = titulo
+        tope_dependencia = None
         if n.get("aviso"):
-            if texto:
+            tope_dependencia = 1
+            if n.get("poder") == "CV":
+                dependencia = organismo_de(titulo)
+                objeto = objeto_convocatoria(cuerpo) if texto else None
+                titulo = f"{dependencia} — {objeto}" if objeto else dependencia
+                tipo = "CONVOCATORIA"
+            elif texto:
                 titulo, emisor, es_edicto, cuerpo = encabezado_aviso(texto)
                 dependencia = emisor
-                tipo = "EDICTO" if es_edicto else (tipo_doc(titulo) or "AVISO")
+                tipo = "EDICTO" if es_edicto else "AVISO"
             else:
                 tipo = "AVISO"
-        clasif = ctx.reglas.clasificar(titulo, cuerpo, dependencia=dependencia,
-                                       es_edicto=es_edicto)
+            titulo_reglas = titulo_para_reglas(titulo, n.get("poder"))
+        clasif = ctx.reglas.clasificar(titulo_reglas, cuerpo, dependencia=dependencia,
+                                       es_edicto=es_edicto, max_puntos_dependencia=tope_dependencia)
         item = modelo.nuevo(
             id=modelo.id_dof(n["cod"]), tipo="dof", fuente_id=self.id, fuente=self.nombre,
             titulo=titulo, url=url_publica(n["cod"], d), fecha=d.isoformat(),
@@ -322,6 +376,13 @@ class FuenteDOF(Fuente):
             sin_texto=texto is None,
         )
         return modelo.aplicar(item, clasif)
+
+
+def titulo_para_reglas(titulo: str, poder: str | None) -> str:
+    """En avisos y convocatorias el título empieza con quien publica: no cuenta."""
+    if poder in SECCIONES_AVISOS:
+        return titulo.split(" — ", 1)[1] if " — " in titulo else ""
+    return titulo
 
 
 def _decodificar(contenido: bytes) -> str:

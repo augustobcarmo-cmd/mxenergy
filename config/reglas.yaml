@@ -17,6 +17,13 @@
 #     distinto, hasta `max_texto`;
 #   - fracción arancelaria en el texto: `puntos_fraccion`.
 #   - `techo` (opcional) limita lo que puede sumar una categoría sola.
+#
+# `noticias`: términos que solo se usan con noticias (en el DOF serían ambiguos,
+# como «transmisión» o «módulos»). En las noticias las categorías sirven de
+# filtro: todas las fuentes ya son del sector.
+#
+# Convocatorias y avisos del DOF (sección de licitaciones y avisos): se
+# clasifican por su objeto y su texto; quien publica aporta 1 punto como máximo.
 # Prioridad: alta ≥ 3, media = 2, baja = 1. Sin puntaje: no aparece entre las
 # relevantes (sigue en «Todas las publicaciones del DOF» y en la búsqueda).
 #
@@ -93,6 +100,22 @@ categorias:
       # Sinónimos en un solo término, para que no cuenten doble en el texto.
       - 're:\b(cenace|centro nacional de control de energia)\b'
       - 're:\b(cfe|comision federal de electricidad)\b'
+    noticias:
+      - renovables
+      - solar
+      - solares
+      - electricidad
+      - demanda eléctrica
+      - centros de datos
+      - centro de datos
+      - data center*
+      - ppa
+      - megavatios
+      - generación
+      - distribuida
+      - termoeléctric*
+      - subasta*
+      - 're:\b\d+(?:[.,]\d+)? ?(?:mw|gw|mwp|mwac|mwdc|kw)\b'
     # Términos que también se usan en hidrocarburos («autoconsumo de
     # petrolíferos»). Si en el título solo aparece uno de estos y además hay
     # términos de hidrocarburos, no cuentan como eléctricos.
@@ -121,6 +144,11 @@ categorias:
     solo_titulo:
       - baterías
       - batería
+    noticias:
+      - almacenamiento
+      - baterías
+      - batería
+      - 're:\b\d+(?:[.,]\d+)? ?(?:mwh|gwh|kwh)\b'
 
   transmision:
     nombre: Transmisión y distribución
@@ -149,7 +177,23 @@ categorias:
       - interconexión eléctrica
       - estudios de interconexión
       - interconexión de centrales
+      - obras de transmisión
+      - red de transmisión
+      - redes de transmisión
+      - sistema de transmisión
+      - proyectos de transmisión
+      - licitación de transmisión
+      - licitaciones de transmisión
+      - infraestructura de transmisión
+      - distribución eléctrica
+      - redes de distribución
+      - red de distribución
       - 're:\b\d{2,3} kv\b'
+    noticias:
+      - transmisión
+      - distribuidoras
+      - interconexión
+      - redes
 
   industria:
     nombre: Industria y equipos
@@ -198,6 +242,17 @@ categorias:
       - contenido nacional
       - cadena de suministro
       - plan méxico
+    noticias:
+      - módulos
+      - paneles
+      - perovskita
+      - celdas
+      - inversor
+      - microinversores
+      - seguidores
+      - fabricante*
+      - fábrica
+      - manufactura
     # Fracciones arancelarias (SA 2022) buscadas en el texto de decretos,
     # reglas de comercio exterior y resoluciones.
     puntos_fraccion: 3
@@ -313,6 +368,10 @@ categorias:
       - estaciones de servicio
       - ley del sector hidrocarburos
       - asea
+    noticias:
+      - crudo
+      - petrolera*
+      - gas
       - agencia de seguridad energía y ambiente
 
   ambiental:

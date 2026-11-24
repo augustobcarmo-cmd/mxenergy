@@ -49,7 +49,7 @@ def migrar(db: Path, datos: Path) -> dict:
             continue
         publicado = tiempo.a_local(datetime.fromisoformat(f["published_at"]))
         resumen = recortar(f["raw_text"] or "", 400) or None
-        c = reglas.clasificar(f["title"], f["raw_text"] or "")
+        c = reglas.clasificar(f["title"], f["raw_text"] or "", es_noticia=True)
         region = None
         if fid == "energia_estrategica":
             region = "México" if reglas.es_mexico(f["title"], f["raw_text"]) else "Internacional"

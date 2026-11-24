@@ -1,18 +1,114 @@
 {
-  "_nota": "Recorte de la respuesta del SIDOF del 23-11-2026 (estructura real); la nota vespertina 9000001 y el aviso 5804628 son de prueba.",
+  "_nota": "Recorte de la respuesta del SIDOF (estructura real del 23 y 24-11-2026); la nota vespertina 9000001 y el aviso 5804628 son de prueba.",
   "messageCode": 200,
   "response": "OK",
-  "imagenesDiario": [{"MAT": true}, {"VES": true}],
+  "imagenesDiario": [
+    {
+      "MAT": true
+    },
+    {
+      "VES": true
+    }
+  ],
   "NotasMatutinas": [
-    {"codNota": 5804596, "codSeccion": "UNICA", "fecha": "23-11-2026", "codDiario": 331025, "tipoNota": "null", "pagina": 4, "nombreCodOrgaUno": "PODER EJECUTIVO", "codOrgaUno": "PE", "codOrgaDos": "SECRETARIA DE GOBERNACION", "orden": 1.0},
-    {"codNota": 5804603, "titulo": "Acuerdo por el cual se da a conocer el informe sobre la recaudación federal participable y las participaciones federales, así como los procedimientos de cálculo, por el mes de octubre de 2026.", "codSeccion": "UNICA", "fecha": "23-11-2026", "tipoNota": "null", "pagina": 11, "codOrgaUno": "PE", "codOrgaDos": "SECRETARIA DE HACIENDA Y CREDITO PUBLICO", "orden": 8.0},
-    {"codNota": 5804604, "titulo": "Tercera Resolución de Modificaciones a las Reglas Generales de Comercio Exterior para 2026 y anexos 1, 18, 21, 22 y 29.", "codSeccion": "UNICA", "fecha": "23-11-2026", "tipoNota": "null", "pagina": 57, "codOrgaUno": "PE", "codOrgaDos": "SECRETARIA DE HACIENDA Y CREDITO PUBLICO", "orden": 9.0},
-    {"codNota": 5804607, "titulo": "Acuerdo por el que se modifica el diverso por el que se da a conocer el domicilio oficial de la Secretaría de Economía y las unidades administrativas adscritas a la misma.", "codSeccion": "UNICA", "fecha": "23-11-2026", "tipoNota": "null", "pagina": 70, "codOrgaUno": "PE", "codOrgaDos": "SECRETARIA DE ECONOMIA", "orden": 12.0},
-    {"codNota": 5804627, "titulo": "Aviso REF:581287", "codSeccion": "UNICA", "fecha": "23-11-2026", "tipoNota": "AVISO", "pagina": 90, "codOrgaUno": "AV", "orden": 40.0},
-    {"codNota": 5804628, "titulo": "Aviso REF:581714", "codSeccion": "UNICA", "fecha": "23-11-2026", "tipoNota": "AVISO", "pagina": 91, "codOrgaUno": "AV", "orden": 41.0}
+    {
+      "codNota": 5804596,
+      "codSeccion": "UNICA",
+      "fecha": "23-11-2026",
+      "codDiario": 331025,
+      "tipoNota": "null",
+      "pagina": 4,
+      "nombreCodOrgaUno": "PODER EJECUTIVO",
+      "codOrgaUno": "PE",
+      "codOrgaDos": "SECRETARIA DE GOBERNACION",
+      "orden": 1.0
+    },
+    {
+      "codNota": 5804603,
+      "titulo": "Acuerdo por el cual se da a conocer el informe sobre la recaudación federal participable y las participaciones federales, así como los procedimientos de cálculo, por el mes de octubre de 2026.",
+      "codSeccion": "UNICA",
+      "fecha": "23-11-2026",
+      "tipoNota": "null",
+      "pagina": 11,
+      "codOrgaUno": "PE",
+      "codOrgaDos": "SECRETARIA DE HACIENDA Y CREDITO PUBLICO",
+      "orden": 8.0
+    },
+    {
+      "codNota": 5804604,
+      "titulo": "Tercera Resolución de Modificaciones a las Reglas Generales de Comercio Exterior para 2026 y anexos 1, 18, 21, 22 y 29.",
+      "codSeccion": "UNICA",
+      "fecha": "23-11-2026",
+      "tipoNota": "null",
+      "pagina": 57,
+      "codOrgaUno": "PE",
+      "codOrgaDos": "SECRETARIA DE HACIENDA Y CREDITO PUBLICO",
+      "orden": 9.0
+    },
+    {
+      "codNota": 5804607,
+      "titulo": "Acuerdo por el que se modifica el diverso por el que se da a conocer el domicilio oficial de la Secretaría de Economía y las unidades administrativas adscritas a la misma.",
+      "codSeccion": "UNICA",
+      "fecha": "23-11-2026",
+      "tipoNota": "null",
+      "pagina": 70,
+      "codOrgaUno": "PE",
+      "codOrgaDos": "SECRETARIA DE ECONOMIA",
+      "orden": 12.0
+    },
+    {
+      "codNota": 5804627,
+      "titulo": "Aviso REF:581287",
+      "codSeccion": "UNICA",
+      "fecha": "23-11-2026",
+      "tipoNota": "AVISO",
+      "pagina": 90,
+      "codOrgaUno": "AV",
+      "orden": 40.0
+    },
+    {
+      "codNota": 5804628,
+      "titulo": "Aviso REF:581714",
+      "codSeccion": "UNICA",
+      "fecha": "23-11-2026",
+      "tipoNota": "AVISO",
+      "pagina": 91,
+      "codOrgaUno": "AV",
+      "orden": 41.0
+    },
+    {
+      "codNota": 5804998,
+      "titulo": "COMISION FEDERAL DE ELECTRICIDAD - REF:582673",
+      "codSeccion": "UNICA",
+      "fecha": "23-11-2026",
+      "tipoNota": "null",
+      "pagina": 120,
+      "codOrgaUno": "CV",
+      "orden": 60.0
+    },
+    {
+      "codNota": 5804986,
+      "titulo": "COMISION FEDERAL DE ELECTRICIDAD - REF:582631",
+      "codSeccion": "UNICA",
+      "fecha": "23-11-2026",
+      "tipoNota": "null",
+      "pagina": 121,
+      "codOrgaUno": "CV",
+      "orden": 61.0
+    }
   ],
   "NotasVespertinas": [
-    {"codNota": 9000001, "titulo": "Acuerdo por el que la Secretaría de Energía emite los lineamientos de prueba para los sistemas de almacenamiento de energía.", "codSeccion": "UNICA", "fecha": "23-11-2026", "tipoNota": "null", "pagina": 2, "codOrgaUno": "PE", "codOrgaDos": "SECRETARIA DE ENERGIA", "orden": 1.0}
+    {
+      "codNota": 9000001,
+      "titulo": "Acuerdo por el que la Secretaría de Energía emite los lineamientos de prueba para los sistemas de almacenamiento de energía.",
+      "codSeccion": "UNICA",
+      "fecha": "23-11-2026",
+      "tipoNota": "null",
+      "pagina": 2,
+      "codOrgaUno": "PE",
+      "codOrgaDos": "SECRETARIA DE ENERGIA",
+      "orden": 1.0
+    }
   ],
   "NotasExtraordinarias": []
 }

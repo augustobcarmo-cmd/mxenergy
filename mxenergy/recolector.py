@@ -21,6 +21,7 @@ import yaml
 from mxenergy import modelo, tiempo
 from mxenergy.almacen import Almacen
 from mxenergy.fuentes import Contexto, construir
+from mxenergy.fuentes.dof import SECCIONES_AVISOS, titulo_para_reglas
 from mxenergy.red import Red
 from mxenergy.reglas import RAIZ, Reglas
 from mxenergy.texto import normalizar
@@ -83,11 +84,14 @@ def reclasificar(items: dict[str, dict], reglas: Reglas, marca: str) -> int:
     for it in items.values():
         if it.get("tipo") == "dof":
             frag = [normalizar(it.get("resumen"))] + modelo.coincidencias(it)
-            c = reglas.clasificar(it.get("titulo") or "", frag, dependencia=it.get("dependencia"),
-                                  es_edicto=it.get("tipo_doc") == "EDICTO", normalizado=True)
+            aviso = it.get("poder") in SECCIONES_AVISOS
+            c = reglas.clasificar(titulo_para_reglas(it.get("titulo") or "", it.get("poder")), frag,
+                                  dependencia=it.get("dependencia"),
+                                  es_edicto=it.get("tipo_doc") == "EDICTO", normalizado=True,
+                                  max_puntos_dependencia=1 if aviso else None)
         else:
             texto = " ".join(filter(None, [it.get("resumen"), it.get("etiquetas")]))
-            c = reglas.clasificar(it.get("titulo") or "", texto)
+            c = reglas.clasificar(it.get("titulo") or "", texto, es_noticia=True)
         antes = (it.get("categorias"), it.get("prioridad"), it.get("puntaje"), it.get("motivos"))
         modelo.aplicar(it, c)
         if it.get("tipo") == "dof":

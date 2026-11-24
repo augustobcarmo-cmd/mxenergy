@@ -36,6 +36,21 @@ def test_tipo_doc_y_url():
         "https://www.dof.gob.mx/nota_detalle.php?codigo=5804604&fecha=23/11/2026"
 
 
+def test_organismo_y_objeto_de_convocatorias():
+    from mxenergy.fuentes.dof import objeto_convocatoria, organismo_de
+
+    assert organismo_de("018TON - CENTRO NACIONAL DE CONTROL DEL GAS NATURAL - REF:582598") == \
+        "CENTRO NACIONAL DE CONTROL DEL GAS NATURAL"
+    texto = "\n".join(["CFE COORDINACION REGIONAL DE PRODUCCION NOROESTE", "Con fundamento en …",
+                       "Internacional Bajo la Cobertura de los Tratados No.", "CFE-0600-CAAAT-0022-2026",
+                       "Adquisición de componentes para transformadores principales",
+                       "de 176 MVA de la C.T. Puerto Libertad.", "Volumen a adquirir", "149 pzas"])
+    assert objeto_convocatoria(texto) == ("Adquisición de componentes para transformadores principales "
+                                          "de 176 MVA de la C.T. Puerto Libertad.")
+    assert objeto_convocatoria("UNIVERSIDAD\nObjeto de la licitación: Servicio de limpieza integral") == \
+        "Servicio de limpieza integral"
+
+
 def test_encabezado_de_avisos():
     titulo, emisor, edicto, cuerpo = encabezado_aviso(
         "Estados Unidos Mexicanos\nCOMISIÓN FEDERAL DE ELECTRICIDAD\nCFE TRANSMISIÓN\nCONVOCATORIA\nObras.")
@@ -49,7 +64,7 @@ def test_dof_recolecta_clasifica_y_registra_dias(reglas):
     estado: dict = {}
     fuente = FuenteDOF(DOF_CFG)
     items = {i["id"]: i for i in fuente.recolectar(contexto(reglas, red, estado=estado))}
-    assert len(items) == 6
+    assert len(items) == 8
     rgce = items["dof:5804604"]
     assert rgce["prioridad"] == "alta" and "industria" in rgce["categorias"]
     assert rgce["sigla"] == "SHCP" and rgce["edicion"] == "MAT" and rgce["tipo_doc"] == "RESOLUCION"
@@ -62,6 +77,13 @@ def test_dof_recolecta_clasifica_y_registra_dias(reglas):
     assert aviso["titulo"].startswith("COMISIÓN FEDERAL DE ELECTRICIDAD")
     assert aviso["sigla"] == "CFE" and aviso["prioridad"] == "alta"
     assert "transmision" in aviso["categorias"]
+    # Convocatorias: el título dice qué se licita; quien publica (CFE) ya no basta
+    fv = items["dof:5804998"]
+    assert fv["titulo"] == "COMISION FEDERAL DE ELECTRICIDAD — Adquisicion de sistemas fotovoltaicos"
+    assert fv["tipo_doc"] == "CONVOCATORIA" and fv["prioridad"] == "alta" and fv["sigla"] == "CFE"
+    carbon = items["dof:5804986"]
+    assert carbon["titulo"].startswith("COMISION FEDERAL DE ELECTRICIDAD — Adquisición, Mantenimiento")
+    assert carbon["prioridad"] == "baja"
     reg = estado["dof_dias"]
     assert reg["2026-11-23"]["estado"] == "ok" and reg["2026-11-23"]["ediciones"] == ["MAT", "VES"]
     assert reg["2026-11-22"]["estado"] == "sin_edicion"
@@ -125,6 +147,15 @@ def test_leer_feed_en_hora_local():
     assert entradas[0]["publicado"].isoformat().startswith("2026-11-23T12:30")   # 18:30 UTC
     assert entradas[0]["resumen"].startswith("El CENACE dio a conocer")
     assert entradas[0]["etiquetas"] == ["Transmisión"]
+
+
+def test_categorias_de_noticias_con_terminos_propios(reglas):
+    c = reglas.clasificar("Chile acumula atrasos en sus obras de transmisión", es_noticia=True)
+    assert c.categorias == ["transmision"]
+    c = reglas.clasificar("Los módulos Suntech obtienen certificación", es_noticia=True)
+    assert c.categorias == ["industria"]
+    # «módulos» solo no basta en el DOF
+    assert reglas.clasificar("Acuerdo por el que se crean los Módulos de Atención Social").prioridad == ""
 
 
 def test_rss_ventana_y_clasificacion(reglas):

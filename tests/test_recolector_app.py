@@ -14,7 +14,7 @@ def test_corrida_completa_e_idempotente(tmp_path, config, red):
     assert r["cambios"] and not r["alertas"]
     alm = Almacen(datos)
     items = alm.items()
-    assert sum(1 for i in items.values() if i["tipo"] == "dof") == 6
+    assert sum(1 for i in items.values() if i["tipo"] == "dof") == 8
     assert {i["fuente_id"] for i in items.values() if i["tipo"] == "noticia"} == \
         {"energia_estrategica", "medio", "mbn"}
     estado = alm.leer_json("estado.json")

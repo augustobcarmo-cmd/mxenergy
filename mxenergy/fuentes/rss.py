@@ -103,7 +103,8 @@ def construir(ctx: Contexto, fuente: Fuente, e: dict, region: str | None = None,
     if region is None and detectar_region:
         region = ("México" if ctx.reglas.es_mexico(e["titulo"], e.get("resumen"), etiquetas)
                   else "Internacional")
-    clasif = ctx.reglas.clasificar(e["titulo"], " ".join(filter(None, [e.get("resumen"), etiquetas])))
+    clasif = ctx.reglas.clasificar(e["titulo"], " ".join(filter(None, [e.get("resumen"), etiquetas])),
+                                   es_noticia=True)
     item = modelo.nuevo(
         id=modelo.id_noticia(e["url"]), tipo="noticia", fuente_id=fuente.id, fuente=fuente.nombre,
         titulo=e["titulo"], url=e["url"], fecha=e["publicado"].date().isoformat(),
