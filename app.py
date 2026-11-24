@@ -246,6 +246,11 @@ with pestana_sintesis:
         grupo = vista.ordenar_dof(dof_rel[dof_rel["prioridad"] == p])
         if grupo.empty:
             continue
+        if p == "baja":   # coincidencias débiles: a mano, pero sin ocupar la portada
+            with st.expander(f"{ETIQUETA_PRIORIDAD[p]} ({len(grupo)}): menciones en el texto"):
+                for r in grupo.itertuples():
+                    tarjeta_dof(r, reglas)
+            continue
         st.markdown(f"##### {ETIQUETA_PRIORIDAD[p]} ({len(grupo)})")
         for r in grupo.itertuples():
             tarjeta_dof(r, reglas)
