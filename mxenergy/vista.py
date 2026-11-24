@@ -20,6 +20,24 @@ FUENTE_PRINCIPAL = "energia_estrategica"
 NUCLEO = {"electricidad", "almacenamiento", "transmision", "industria"}
 ORDEN_PRIORIDAD = {"alta": 0, "media": 1, "baja": 2, "": 3}
 NOMBRE_EDICION = {"MAT": "Matutina", "VES": "Vespertina", "EXT": "Extraordinaria"}
+_TIPOS_DOC = {"RESOLUCION": "Resolución", "INDICE": "Índice", "CODIGO": "Código",
+              "ACLARACION": "Aclaración", "MODIFICACION": "Modificación", "FE DE ERRATAS": "Fe de erratas",
+              "DACG": "DACG", "NOM": "NOM", "PROY-NOM": "Proyecto de NOM", "LEY": "Ley"}
+
+
+def tipo_doc(t: str) -> str:
+    """Nombre para mostrar del tipo de publicación del DOF."""
+    return _TIPOS_DOC.get(t, t.capitalize()) if t else ""
+
+
+def resumen_util(titulo: str, resumen: str) -> str:
+    """El resumen si dice algo más que el título (en varios medios lo repite)."""
+    if not resumen:
+        return ""
+    t, r = normalizar(titulo), normalizar(resumen)
+    if not r or r.startswith(t[:80]) or t.startswith(r[:80]):
+        return ""
+    return resumen
 
 
 def url_raw(nombre: str) -> str:

@@ -457,6 +457,7 @@ excluir_titulo:
   - listado de contribuyentes
   - artículo 69 b
   - prestadores de servicios digitales
+  - 're:^oficio 500 05'           # listados y avisos rutinarios del SAT (AGAFF)
   - manual de integración y funcionamiento
   - código de conducta
   - comité interno

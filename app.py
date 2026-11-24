@@ -81,7 +81,7 @@ def tarjeta_dof(r, reglas: Reglas, motivos: bool = True) -> None:
     if dep:
         meta.append(dep)
     if r.tipo_doc:
-        meta.append(r.tipo_doc.capitalize() if len(r.tipo_doc) > 4 else r.tipo_doc)
+        meta.append(vista.tipo_doc(r.tipo_doc))
     lineas = [f"**[{esc(r.titulo)}]({url_md(r.url)})**",
               f":gray[{esc(' · '.join(meta))}] {insignias(reglas, r.categorias)}"]
     if motivos and r.motivos:
@@ -93,8 +93,9 @@ def tarjeta_noticia(r, reglas: Reglas, resumen: bool) -> None:
     meta = [r.fuente, f"{fecha_corta(r.fecha)} {r.hora}".strip()]
     lineas = [f"**[{esc(r.titulo)}]({url_md(r.url)})**",
               f":gray[{esc(' · '.join(meta))}] {insignias(reglas, r.categorias)}"]
-    if resumen and r.resumen:
-        texto = r.resumen if len(r.resumen) <= 240 else r.resumen[:237].rsplit(" ", 1)[0] + "…"
+    texto = vista.resumen_util(r.titulo, r.resumen) if resumen else ""
+    if texto:
+        texto = texto if len(texto) <= 240 else texto[:237].rsplit(" ", 1)[0] + "…"
         lineas.append(f":gray[{esc(texto)}]")
     st.markdown("  \n".join(lineas))
 

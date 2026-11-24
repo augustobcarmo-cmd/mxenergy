@@ -148,3 +148,11 @@ def test_reclasificar_con_coincidencias_guardadas(reglas):
     otra = reglas.clasificar("Decreto por el que se modifica la Tarifa", original.coincidencias,
                              normalizado=True)
     assert (otra.prioridad, otra.categorias) == (original.prioridad, original.categorias)
+
+
+def test_resumen_que_repite_el_titulo_no_se_muestra():
+    from mxenergy.vista import resumen_util, tipo_doc
+
+    assert resumen_util("Banco Sabadell moviliza USD 56 millones", "Banco Sabadell moviliza USD 56 millones") == ""
+    assert resumen_util("Título", "Otra cosa distinta") == "Otra cosa distinta"
+    assert tipo_doc("RESOLUCION") == "Resolución" and tipo_doc("CONVOCATORIA") == "Convocatoria"
