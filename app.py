@@ -58,6 +58,15 @@ def fecha_corta(f: str) -> str:
         return f
 
 
+def fecha_hora(iso: str | None) -> str:
+    """'24 nov 2026, 16:14' a partir de una marca ISO."""
+    try:
+        dt = datetime.fromisoformat(iso or "")
+    except ValueError:
+        return iso or "—"
+    return f"{dt.day} {tiempo.MESES_CORTOS[dt.month - 1]} {dt.year}, {dt:%H:%M}"
+
+
 def hace(iso: str | None) -> str:
     if not iso:
         return "—"
@@ -151,12 +160,12 @@ prioridad_fuente.setdefault(EE, 1)
 with st.sidebar:
     st.header("Filtros")
     cats_elegidas = st.multiselect(
-        "Categorías", list(reglas.categorias), format_func=reglas.nombre,
+        "Categorías", list(reglas.categorias), format_func=reglas.nombre, placeholder="Todas",
         help="Vacío = todas. Se aplica al DOF y a las noticias.")
     prioridad_min = st.radio("DOF: prioridad mínima", ["baja", "media", "alta"], horizontal=True,
                              format_func=str.capitalize)
     fuentes_noticias = sorted(set(items.loc[items["tipo"] == "noticia", "fuente"]))
-    fuentes_elegidas = st.multiselect("Fuentes de noticias", fuentes_noticias,
+    fuentes_elegidas = st.multiselect("Fuentes de noticias", fuentes_noticias, placeholder="Todas",
                                       help="Vacío = todas.")
     con_resumen = st.toggle("Mostrar el resumen de las noticias", value=True)
     filtro_texto = st.text_input("Filtrar por texto", placeholder="ej. almacenamiento, CENACE", key="filtro")
@@ -339,7 +348,7 @@ with pestana_buscar:
 # --- estado ---------------------------------------------------------------------------
 
 with pestana_estado:
-    st.markdown(f"**Última actualización:** {actualizado or '—'} ({hace(actualizado)}) · "
+    st.markdown(f"**Última actualización:** {fecha_hora(actualizado)} ({hace(actualizado)}) · "
                 f"**Publicaciones guardadas:** {len(items):,} · "
                 f"**Desde:** {datos.meta.get('desde') or '—'}")
     filas = []
