@@ -1,0 +1,13 @@
+{
+ "actualizado": "2026-11-28T05:39:56-06:00",
+ "desde": "2026-07-02",
+ "hasta": "2026-11-28",
+ "total": 10885,
+ "ultima_corrida": {
+  "agregados": 1,
+  "alertas": [],
+  "inicio": "2026-11-28T05:39:56-06:00",
+  "segundos": 46.7
+ },
+ "version_reglas": "3bab1a19e46d"
+}

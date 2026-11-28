@@ -1,0 +1,144 @@
+17:32:07 | INFO    | Corrida 2026-11-27T17:32:07-06:00 · reglas 3bab1a19e46d · 10791 publicaciones guardadas
+17:32:08 | INFO    | DOF 2026-11-27: 78 notas (MAT); 0 textos nuevos
+17:32:08 | INFO    | DOF 2026-11-26: 135 notas (MAT); 0 textos nuevos
+17:32:08 | INFO    | DOF 2026-11-25: 80 notas (MAT); 0 textos nuevos
+17:32:09 | INFO    | DOF 2026-11-24: 209 notas (MAT); 0 textos nuevos
+17:32:09 | INFO    | DOF 2026-11-23: 69 notas (MAT); 0 textos nuevos
+17:32:09 | INFO    | DOF 2026-11-20: 31 notas (MAT/VES); 0 textos nuevos
+17:32:10 | INFO    | DOF 2026-11-19: 143 notas (MAT); 0 textos nuevos
+17:32:10 | INFO    | DOF 2026-11-18: 83 notas (MAT/VES); 0 textos nuevos
+17:32:10 | INFO    | DOF: 0 encontradas, 0 nuevas, 0 actualizadas (3.2 s)
+17:32:20 | INFO    | Energía Estratégica: 40 enlaces en https://www.energiaestrategica.com/es/articles/mexico
+17:32:24 | INFO    | Energía Estratégica: 11 enlaces en https://www.energiaestrategica.com/energiaestrategica/es
+17:32:31 | INFO    | Energía Estratégica: 20 enlaces en https://www.energiaestrategica.com/es/articles/storage
+17:32:37 | INFO    | Energía Estratégica: 20 enlaces en https://www.energiaestrategica.com/es/articles/fotovoltaica
+17:32:44 | INFO    | Energía Estratégica: 20 enlaces en https://www.energiaestrategica.com/es/articles/eolica
+17:32:44 | INFO    | Energía Estratégica: 0 encontradas, 0 nuevas, 0 actualizadas (34.0 s)
+17:35:54 | ERROR   | Global Energy falló: ErrorRed: ConnectionError: HTTPSConnectionPool(host='globalenergy.mx', port=443): Max retries exceeded with url: /feed/ (Caused by ReadTimeoutError("HTTPSConnectionPool(host='globalenergy.mx', port=443): Read timed out. (read timeout=45)"))
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/urllib3/connectionpool.py", line 540, in _make_request
+    response = conn.getresponse()
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/urllib3/connection.py", line 638, in getresponse
+    httplib_response = super().getresponse()
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/http/client.py", line 1478, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/http/client.py", line 343, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/http/client.py", line 304, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/socket.py", line 723, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/ssl.py", line 1315, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/ssl.py", line 1149, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/urllib3/connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/urllib3/connectionpool.py", line 542, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/urllib3/connectionpool.py", line 373, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='globalenergy.mx', port=443): Read timed out. (read timeout=45)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/urllib3/connectionpool.py", line 886, in urlopen
+    return self.urlopen(
+           ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<13 lines>...
+        **response_kw,
+        ^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/urllib3/connectionpool.py", line 886, in urlopen
+    return self.urlopen(
+           ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<13 lines>...
+        **response_kw,
+        ^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/urllib3/connectionpool.py", line 886, in urlopen
+    return self.urlopen(
+           ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<13 lines>...
+        **response_kw,
+        ^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/urllib3/connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/urllib3/util/retry.py", line 555, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='globalenergy.mx', port=443): Max retries exceeded with url: /feed/ (Caused by ReadTimeoutError("HTTPSConnectionPool(host='globalenergy.mx', port=443): Read timed out. (read timeout=45)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/work/mxenergy/mxenergy/mxenergy/red.py", line 58, in get
+    r = self._sesion().get(url, timeout=self.timeout, verify=verify, **kw)
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/requests/sessions.py", line 671, in get
+    return self.request("GET", url, params=params, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/requests/adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='globalenergy.mx', port=443): Max retries exceeded with url: /feed/ (Caused by ReadTimeoutError("HTTPSConnectionPool(host='globalenergy.mx', port=443): Read timed out. (read timeout=45)"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/mxenergy/mxenergy/mxenergy/recolector.py", line 173, in correr
+    nuevos = fuente.recolectar(ctx)
+  File "/home/runner/work/mxenergy/mxenergy/mxenergy/fuentes/rss.py", line 64, in recolectar
+    contenido = ctx.red.contenido(self.url_pagina(n))
+  File "/home/runner/work/mxenergy/mxenergy/mxenergy/red.py", line 97, in contenido
+    return self.get(url, **kw).content
+           ~~~~~~~~^^^^^^^^^^^
+  File "/home/runner/work/mxenergy/mxenergy/mxenergy/red.py", line 61, in get
+    raise ErrorRed(f"{type(e).__name__}: {e}") from e
+mxenergy.red.ErrorRed: ConnectionError: HTTPSConnectionPool(host='globalenergy.mx', port=443): Max retries exceeded with url: /feed/ (Caused by ReadTimeoutError("HTTPSConnectionPool(host='globalenergy.mx', port=443): Read timed out. (read timeout=45)"))
+17:35:54 | INFO    | Global Energy: 0 encontradas, 0 nuevas, 0 actualizadas (189.4 s) — ERROR ErrorRed: ConnectionError: HTTPSConnectionPool(host='globalenergy.mx', port=443): Max retries exceeded with url: /feed/ (Caused by ReadTimeoutError("HTTPSConnectionPool(host='globalenergy.mx', port=443): Read timed out. (read timeout=45)"))
+17:35:54 | INFO    | Mexico Business News: 1 encontradas, 1 nuevas, 0 actualizadas (0.3 s)
+17:35:55 | INFO    | PV Magazine México: 18 encontradas, 0 nuevas, 0 actualizadas (1.1 s)
+17:35:57 | INFO    | Energía a Debate: 15 encontradas, 1 nuevas, 1 actualizadas (2.2 s)
+17:36:01 | INFO    | Energy News MX: 33 encontradas, 0 nuevas, 0 actualizadas (3.6 s)
+17:36:03 | INFO    | Energy21: 16 encontradas, 1 nuevas, 3 actualizadas (2.0 s)
+17:36:03 | INFO    | Fin: 10794 publicaciones (3 nuevas, 4 actualizadas, 0 reclasificadas) en 236 s, 22 peticiones

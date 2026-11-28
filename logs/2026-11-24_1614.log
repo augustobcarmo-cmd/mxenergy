@@ -1,0 +1,46 @@
+16:14:55 | INFO    | Corrida 2026-11-24T16:14:55-06:00 · reglas 31cd00784f97 · 3046 publicaciones guardadas
+16:15:03 | INFO    | DOF 2026-11-24: 209 notas (MAT); 209 textos nuevos
+16:15:09 | INFO    | DOF 2026-11-23: 69 notas (MAT); 69 textos nuevos
+16:15:15 | INFO    | DOF 2026-11-20: 31 notas (MAT/VES); 31 textos nuevos
+16:15:22 | INFO    | DOF 2026-11-19: 143 notas (MAT); 143 textos nuevos
+16:15:36 | INFO    | DOF 2026-11-18: 83 notas (MAT/VES); 83 textos nuevos
+16:15:44 | INFO    | DOF 2026-11-17: 204 notas (MAT); 204 textos nuevos
+16:15:50 | INFO    | DOF 2026-11-13: 66 notas (MAT/VES); 66 textos nuevos
+16:15:56 | INFO    | DOF 2026-11-12: 125 notas (MAT); 125 textos nuevos
+16:16:01 | INFO    | DOF 2026-11-11: 60 notas (MAT/VES); 60 textos nuevos
+16:16:09 | INFO    | DOF 2026-11-10: 179 notas (MAT); 179 textos nuevos
+16:16:16 | INFO    | DOF 2026-11-09: 44 notas (MAT/VES); 44 textos nuevos
+16:16:22 | INFO    | DOF 2026-11-06: 79 notas (MAT/VES); 79 textos nuevos
+16:16:27 | INFO    | DOF 2026-11-05: 111 notas (MAT); 111 textos nuevos
+16:16:36 | INFO    | DOF 2026-11-04: 59 notas (MAT/VES); 59 textos nuevos
+16:16:43 | INFO    | DOF 2026-11-03: 165 notas (MAT); 165 textos nuevos
+16:16:49 | INFO    | DOF 2026-11-02: 27 notas (MAT); 27 textos nuevos
+16:16:58 | INFO    | DOF 2026-10-30: 86 notas (MAT/VES); 86 textos nuevos
+16:17:03 | INFO    | DOF 2026-10-29: 125 notas (MAT); 125 textos nuevos
+16:17:13 | INFO    | DOF 2026-10-28: 69 notas (MAT); 69 textos nuevos
+16:17:21 | INFO    | DOF 2026-10-27: 149 notas (MAT); 149 textos nuevos
+16:17:26 | INFO    | DOF 2026-10-26: 63 notas (MAT); 63 textos nuevos
+16:17:33 | INFO    | DOF 2026-10-23: 68 notas (MAT/VES); 68 textos nuevos
+16:17:39 | INFO    | DOF 2026-10-22: 131 notas (MAT); 131 textos nuevos
+16:17:49 | INFO    | DOF 2026-10-21: 112 notas (MAT/VES); 112 textos nuevos
+16:17:56 | INFO    | DOF 2026-10-20: 137 notas (MAT); 137 textos nuevos
+16:18:00 | INFO    | DOF 2026-10-19: 43 notas (MAT); 43 textos nuevos
+16:18:06 | INFO    | DOF 2026-10-16: 57 notas (MAT/VES); 57 textos nuevos
+16:18:11 | INFO    | DOF 2026-10-15: 107 notas (MAT); 107 textos nuevos
+16:18:27 | INFO    | DOF 2026-10-14: 64 notas (MAT/VES); 64 textos nuevos
+16:18:35 | INFO    | DOF 2026-10-13: 164 notas (MAT); 135 textos nuevos
+16:18:35 | INFO    | DOF: 3000 encontradas, 3000 nuevas, 0 actualizadas (220.1 s)
+16:18:43 | INFO    | Energía Estratégica: 40 enlaces en https://www.energiaestrategica.com/es/articles/mexico
+16:18:47 | INFO    | Energía Estratégica: 11 enlaces en https://www.energiaestrategica.com/energiaestrategica/es
+16:18:54 | INFO    | Energía Estratégica: 20 enlaces en https://www.energiaestrategica.com/es/articles/storage
+16:19:01 | INFO    | Energía Estratégica: 20 enlaces en https://www.energiaestrategica.com/es/articles/fotovoltaica
+16:19:07 | INFO    | Energía Estratégica: 20 enlaces en https://www.energiaestrategica.com/es/articles/eolica
+16:19:10 | INFO    | Energía Estratégica: 17 encontradas, 9 nuevas, 8 actualizadas (35.2 s)
+16:19:11 | INFO    | Global Energy: 14 encontradas, 5 nuevas, 9 actualizadas (0.9 s)
+16:19:13 | INFO    | Mexico Business News: 2 encontradas, 2 nuevas, 0 actualizadas (2.0 s)
+16:19:14 | INFO    | PV Magazine México: 9 encontradas, 4 nuevas, 5 actualizadas (0.5 s)
+16:19:16 | INFO    | Energía a Debate: 8 encontradas, 2 nuevas, 6 actualizadas (2.9 s)
+16:19:19 | INFO    | Energy News MX: 15 encontradas, 7 nuevas, 8 actualizadas (2.4 s)
+16:19:19 | INFO    | Energy21: 7 encontradas, 3 nuevas, 4 actualizadas (0.6 s)
+16:19:25 | INFO    | Reglas nuevas (— → 31cd00784f97): 2069 publicaciones reclasificadas
+16:19:26 | INFO    | Fin: 6078 publicaciones (3032 nuevas, 40 actualizadas, 2069 reclasificadas) en 271 s, 3075 peticiones

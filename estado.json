@@ -1,0 +1,1222 @@
+{
+ "actualizado": "2026-11-28T05:39:56-06:00",
+ "dof_dias": {
+  "2026-08-01": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-02": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-03": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 105,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-04": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 147,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-05": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 54,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-06": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 100,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-07": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 59,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-08": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-09": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 1,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-10": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 68,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-11": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 128,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-12": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 82,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-13": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 116,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-14": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 68,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-15": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-16": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-17": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 59,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-18": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 125,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-19": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 64,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-20": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 90,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-21": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 80,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-22": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-23": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-24": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 51,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-25": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 134,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-26": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 50,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-27": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 91,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-28": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 73,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-29": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-30": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-08-31": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 68,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-09-01": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 108,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-09-02": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 68,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-09-03": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 113,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-09-04": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 92,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-05": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-06": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-07": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 47,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-08": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 112,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-09": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 69,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-10": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 130,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-11": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 63,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-12": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-13": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-14": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 27,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-15": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 86,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-16": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-17": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 111,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-18": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 62,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-19": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-20": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-21": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 77,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-22": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 104,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-23": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 64,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-24": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 114,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-25": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 89,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-26": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-27": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-28": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 55,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-29": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 150,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-09-30": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 67,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-10-01": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 101,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-10-02": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 71,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-10-03": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-10-04": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-10-05": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 79,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-10-06": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 140,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-10-07": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 71,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-10-08": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 93,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-10-09": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 69,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-10-10": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-10-11": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-10-12": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 21,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-10-13": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 164,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:21:35-06:00"
+  },
+  "2026-10-14": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 64,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-15": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 107,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-16": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 57,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-17": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-18": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-19": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 43,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-20": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 137,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-21": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 112,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-22": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 131,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-23": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 68,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-24": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-25": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-26": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 63,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-27": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 149,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-28": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 69,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-29": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 125,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-30": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 86,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-10-31": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-11-01": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-11-02": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 27,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-11-03": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 165,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-11-04": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 59,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-11-05": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 111,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-11-06": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 79,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-11-07": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-11-08": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-11-09": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 44,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-11-10": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 179,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-11-11": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 60,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-11-12": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 125,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-11-13": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 66,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-11-14": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T16:14:55-06:00"
+  },
+  "2026-11-15": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-24T23:26:52-06:00"
+  },
+  "2026-11-16": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-25T23:05:49-06:00"
+  },
+  "2026-11-17": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 204,
+   "origen": "sidof",
+   "revisado": "2026-11-26T23:04:07-06:00"
+  },
+  "2026-11-18": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 83,
+   "origen": "sidof",
+   "revisado": "2026-11-27T22:44:43-06:00"
+  },
+  "2026-11-19": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 143,
+   "origen": "sidof",
+   "revisado": "2026-11-28T05:39:56-06:00"
+  },
+  "2026-11-20": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 31,
+   "origen": "sidof",
+   "revisado": "2026-11-28T05:39:56-06:00"
+  },
+  "2026-11-21": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-28T05:39:56-06:00"
+  },
+  "2026-11-22": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-28T05:39:56-06:00"
+  },
+  "2026-11-23": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 69,
+   "origen": "sidof",
+   "revisado": "2026-11-28T05:39:56-06:00"
+  },
+  "2026-11-24": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 209,
+   "origen": "sidof",
+   "revisado": "2026-11-28T05:39:56-06:00"
+  },
+  "2026-11-25": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 80,
+   "origen": "sidof",
+   "revisado": "2026-11-28T05:39:56-06:00"
+  },
+  "2026-11-26": {
+   "ediciones": [
+    "MAT"
+   ],
+   "estado": "ok",
+   "notas": 135,
+   "origen": "sidof",
+   "revisado": "2026-11-28T05:39:56-06:00"
+  },
+  "2026-11-27": {
+   "ediciones": [
+    "MAT",
+    "VES"
+   ],
+   "estado": "ok",
+   "notas": 167,
+   "origen": "sidof",
+   "revisado": "2026-11-28T05:39:56-06:00"
+  },
+  "2026-11-28": {
+   "ediciones": [],
+   "estado": "sin_edicion",
+   "notas": 0,
+   "origen": "sidof",
+   "revisado": "2026-11-28T05:39:56-06:00"
+  }
+ },
+ "fuentes": {
+  "dof": {
+   "agregados": 0,
+   "avisos": [],
+   "detalles": {
+    "dias_con_error": [],
+    "dias_consultados": 10,
+    "dias_pendientes": 0,
+    "textos_descargados": 0
+   },
+   "encontrados": 0,
+   "fallas_seguidas": 0,
+   "items_7d": 660,
+   "nombre": "DOF",
+   "prioridad": 0,
+   "segundos": 2.0,
+   "tipo": "dof",
+   "total": 7677,
+   "ultima_corrida": "2026-11-28T05:39:56-06:00",
+   "ultima_ok": "2026-11-28T05:39:56-06:00",
+   "ultimo_item": "2026-11-27"
+  },
+  "energia_a_debate": {
+   "agregados": 1,
+   "avisos": [],
+   "detalles": {
+    "entradas": 90,
+    "paginas": 1
+   },
+   "encontrados": 12,
+   "fallas_seguidas": 0,
+   "items_7d": 22,
+   "nombre": "Energía a Debate",
+   "prioridad": 2,
+   "segundos": 2.0,
+   "tipo": "noticia",
+   "total": 338,
+   "ultima_corrida": "2026-11-28T05:39:56-06:00",
+   "ultima_ok": "2026-11-28T05:39:56-06:00",
+   "ultimo_item": "2026-11-28"
+  },
+  "energia_estrategica": {
+   "agregados": 0,
+   "avisos": [],
+   "detalles": {
+    "abiertos": 0,
+    "candidatos": 77,
+    "fallas": 0,
+    "listados": {
+     "https://www.energiaestrategica.com/energiaestrategica/es": 11,
+     "https://www.energiaestrategica.com/es/articles/eolica": 20,
+     "https://www.energiaestrategica.com/es/articles/fotovoltaica": 20,
+     "https://www.energiaestrategica.com/es/articles/mexico": 40,
+     "https://www.energiaestrategica.com/es/articles/storage": 20
+    },
+    "sin_abrir": 0
+   },
+   "encontrados": 0,
+   "fallas_seguidas": 0,
+   "items_7d": 52,
+   "nombre": "Energía Estratégica",
+   "prioridad": 1,
+   "segundos": 36.7,
+   "tipo": "noticia",
+   "total": 544,
+   "ultima_corrida": "2026-11-28T05:39:56-06:00",
+   "ultima_ok": "2026-11-28T05:39:56-06:00",
+   "ultimo_error": {
+    "cuando": "2026-11-26T23:04:07-06:00",
+    "mensaje": "ErrorRed: HTTP 402 en https://www.energiaestrategica.com/energiaestrategica/es"
+   },
+   "ultimo_item": "2026-11-27"
+  },
+  "energy21": {
+   "agregados": 0,
+   "avisos": [],
+   "detalles": {
+    "entradas": 20,
+    "paginas": 2
+   },
+   "encontrados": 12,
+   "fallas_seguidas": 0,
+   "items_7d": 20,
+   "nombre": "Energy21",
+   "prioridad": 3,
+   "segundos": 1.3,
+   "tipo": "noticia",
+   "total": 391,
+   "ultima_corrida": "2026-11-28T05:39:56-06:00",
+   "ultima_ok": "2026-11-28T05:39:56-06:00",
+   "ultimo_item": "2026-11-27"
+  },
+  "energy_news": {
+   "agregados": 0,
+   "avisos": [],
+   "detalles": {
+    "entradas": 30,
+    "paginas": 3
+   },
+   "encontrados": 25,
+   "fallas_seguidas": 0,
+   "items_7d": 41,
+   "nombre": "Energy News MX",
+   "prioridad": 3,
+   "segundos": 1.9,
+   "tipo": "noticia",
+   "total": 911,
+   "ultima_corrida": "2026-11-28T05:39:56-06:00",
+   "ultima_ok": "2026-11-28T05:39:56-06:00",
+   "ultimo_item": "2026-11-27"
+  },
+  "global_energy": {
+   "agregados": 0,
+   "avisos": [],
+   "detalles": {
+    "entradas": 24,
+    "paginas": 3
+   },
+   "encontrados": 17,
+   "fallas_seguidas": 0,
+   "items_7d": 32,
+   "nombre": "Global Energy",
+   "prioridad": 2,
+   "segundos": 1.2,
+   "tipo": "noticia",
+   "total": 528,
+   "ultima_corrida": "2026-11-28T05:39:56-06:00",
+   "ultima_ok": "2026-11-28T05:39:56-06:00",
+   "ultimo_error": {
+    "cuando": "2026-11-27T17:32:07-06:00",
+    "mensaje": "ErrorRed: ConnectionError: HTTPSConnectionPool(host='globalenergy.mx', port=443): Max retries exceeded with url: /feed/ (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='globalenergy.mx', port=443): Read timed out. (read timeout=45)\"))"
+   },
+   "ultimo_item": "2026-11-27"
+  },
+  "mbn": {
+   "agregados": 0,
+   "avisos": [],
+   "detalles": {
+    "abiertos": 0,
+    "enlaces": 16
+   },
+   "encontrados": 0,
+   "fallas_seguidas": 0,
+   "items_7d": 14,
+   "nombre": "Mexico Business News",
+   "prioridad": 2,
+   "segundos": 0.4,
+   "tipo": "noticia",
+   "total": 113,
+   "ultima_corrida": "2026-11-28T05:39:56-06:00",
+   "ultima_ok": "2026-11-28T05:39:56-06:00",
+   "ultimo_item": "2026-11-27"
+  },
+  "pv_magazine": {
+   "agregados": 0,
+   "avisos": [],
+   "detalles": {
+    "entradas": 20,
+    "paginas": 2
+   },
+   "encontrados": 14,
+   "fallas_seguidas": 0,
+   "items_7d": 23,
+   "nombre": "PV Magazine México",
+   "prioridad": 2,
+   "segundos": 1.0,
+   "tipo": "noticia",
+   "total": 383,
+   "ultima_corrida": "2026-11-28T05:39:56-06:00",
+   "ultima_ok": "2026-11-28T05:39:56-06:00",
+   "ultimo_item": "2026-11-27"
+  }
+ },
+ "version_reglas": "3bab1a19e46d"
+}

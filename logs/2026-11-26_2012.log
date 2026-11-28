@@ -1,0 +1,51 @@
+20:12:16 | INFO    | Corrida 2026-11-26T20:12:16-06:00 · reglas 3bab1a19e46d · 10681 publicaciones guardadas
+20:12:17 | INFO    | DOF 2026-11-26: 135 notas (MAT); 0 textos nuevos
+20:12:17 | INFO    | DOF 2026-11-25: 80 notas (MAT); 0 textos nuevos
+20:12:18 | INFO    | DOF 2026-11-24: 209 notas (MAT); 0 textos nuevos
+20:12:18 | INFO    | DOF 2026-11-23: 69 notas (MAT); 0 textos nuevos
+20:12:18 | INFO    | DOF 2026-11-20: 31 notas (MAT/VES); 0 textos nuevos
+20:12:18 | INFO    | DOF 2026-11-19: 143 notas (MAT); 0 textos nuevos
+20:12:18 | INFO    | DOF 2026-11-18: 83 notas (MAT/VES); 0 textos nuevos
+20:12:18 | INFO    | DOF 2026-11-17: 204 notas (MAT); 0 textos nuevos
+20:12:18 | INFO    | DOF: 0 encontradas, 0 nuevas, 0 actualizadas (1.9 s)
+20:12:40 | WARNING | Energía Estratégica: el listado https://www.energiaestrategica.com/es/articles/mexico no cargó (Page.wait_for_selector: Timeout 20000ms exceeded.
+Call log:
+  - waiting for locator("a[href*=\"/notes/\"]")
+)
+20:13:00 | WARNING | Energía Estratégica: el listado https://www.energiaestrategica.com/energiaestrategica/es no cargó (Page.wait_for_selector: Timeout 20000ms exceeded.
+Call log:
+  - waiting for locator("a[href*=\"/notes/\"]")
+)
+20:13:20 | WARNING | Energía Estratégica: el listado https://www.energiaestrategica.com/es/articles/storage no cargó (Page.wait_for_selector: Timeout 20000ms exceeded.
+Call log:
+  - waiting for locator("a[href*=\"/notes/\"]")
+)
+20:13:40 | WARNING | Energía Estratégica: el listado https://www.energiaestrategica.com/es/articles/fotovoltaica no cargó (Page.wait_for_selector: Timeout 20000ms exceeded.
+Call log:
+  - waiting for locator("a[href*=\"/notes/\"]")
+)
+20:14:00 | WARNING | Energía Estratégica: el listado https://www.energiaestrategica.com/es/articles/eolica no cargó (Page.wait_for_selector: Timeout 20000ms exceeded.
+Call log:
+  - waiting for locator("a[href*=\"/notes/\"]")
+)
+20:14:00 | ERROR   | Energía Estratégica falló: ErrorRed: HTTP 402 en https://www.energiaestrategica.com/energiaestrategica/es
+Traceback (most recent call last):
+  File "/home/runner/work/mxenergy/mxenergy/mxenergy/recolector.py", line 173, in correr
+    nuevos = fuente.recolectar(ctx)
+  File "/home/runner/work/mxenergy/mxenergy/mxenergy/fuentes/energia_estrategica.py", line 168, in recolectar
+    candidatos = self.candidatos(ctx)
+  File "/home/runner/work/mxenergy/mxenergy/mxenergy/fuentes/energia_estrategica.py", line 153, in candidatos
+    html = ctx.red.texto(f"{BASE}/energiaestrategica/es")
+  File "/home/runner/work/mxenergy/mxenergy/mxenergy/red.py", line 88, in texto
+    r = self.get(url, **kw)
+  File "/home/runner/work/mxenergy/mxenergy/mxenergy/red.py", line 67, in get
+    raise ErrorRed(f"HTTP {r.status_code} en {url}")
+mxenergy.red.ErrorRed: HTTP 402 en https://www.energiaestrategica.com/energiaestrategica/es
+20:14:00 | INFO    | Energía Estratégica: 0 encontradas, 0 nuevas, 0 actualizadas (101.7 s) — ERROR ErrorRed: HTTP 402 en https://www.energiaestrategica.com/energiaestrategica/es
+20:14:02 | INFO    | Global Energy: 26 encontradas, 1 nuevas, 0 actualizadas (1.9 s)
+20:14:02 | INFO    | Mexico Business News: 0 encontradas, 0 nuevas, 0 actualizadas (0.4 s)
+20:14:04 | INFO    | PV Magazine México: 18 encontradas, 0 nuevas, 0 actualizadas (1.9 s)
+20:14:07 | INFO    | Energía a Debate: 17 encontradas, 0 nuevas, 0 actualizadas (2.3 s)
+20:14:07 | INFO    | Energy News MX: 38 encontradas, 0 nuevas, 0 actualizadas (0.3 s)
+20:14:09 | INFO    | Energy21: 17 encontradas, 1 nuevas, 0 actualizadas (1.5 s)
+20:14:09 | INFO    | Fin: 10683 publicaciones (2 nuevas, 0 actualizadas, 0 reclasificadas) en 112 s, 25 peticiones
